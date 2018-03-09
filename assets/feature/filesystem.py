@@ -1,16 +1,33 @@
 import os 
 import assets.message.MessageManage as Msg
+import assets.module.judge as judge 
+
 
 class FileSystem:
     def __init__(self):
         self.username = self.getUsername()
-        self.userlocate = "/Users/"+self.username
+        self.userlocate = os.getcwd()+"/assets/image/"
 
-    def buildDirectory(self):
-        pass
-    
-    def deleteDirectory(self):
-        pass 
+    def buildDirectory(self,backup="Backup"):
+        if not os.path.exists(os.getcwd()+"/"+backup):
+            os.mkdir(backup)
+        
+    def deleteDirectory(self,backup="Backup"):
+        if os.path.exists(os.getcwd()+"/"+backup):
+            # 判斷
+            check = input("Are you sure delete directory ? (yes) ")
+            check = judge.Appropriate(check,"yes").checkType()
+            if check.upper().strip() == "YES":
+                # 若肯定
+                os.rmdir(os.getcwd()+"/"+backup)
+                Msg.Message.sucMessage(2,"已刪除 "+os.getcwd()+"/"+backup)
+                pass 
+            else :
+                # 若不肯定
+                Msg.Message.msgMessage(2,"")
+                return 
+        else:
+            Msg.Message.errMessage(2)
 
     def moveDirectory(self):
         pass 

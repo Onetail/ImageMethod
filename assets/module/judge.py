@@ -6,7 +6,7 @@ class Appropriate:
         self.locate = locate
 
     def checkType(self):
-        return self.emptyReport() if self.item == "" else self.checkTrue()
+        return self.emptyReport() if self.item == "" or self.item == self.locate else self.checkTrue()
     
     def checkTrue(self):
         return self.resultReport() # 需要增加判斷

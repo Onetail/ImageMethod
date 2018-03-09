@@ -3,6 +3,7 @@ def message(number,txt=""):
         1 : lambda : "Call  message\033[0m",
         2 : lambda : "\033[2m {:10} \033[0m".format(txt),
         3 : lambda : "\033[34m {:10} \033[0m".format(txt),
+        4 : lambda : "\033[23m {:10} \033[0m".format(txt),
     }
     
     return print(switch.get(number)())
