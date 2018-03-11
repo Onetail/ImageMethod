@@ -1,4 +1,5 @@
 import os 
+import shutil
 import assets.message.MessageManage as Msg
 import assets.module.judge as judge 
 
@@ -19,7 +20,7 @@ class FileSystem:
             check = judge.Appropriate(check,"yes").checkType()
             if check.upper().strip() == "YES":
                 # 若肯定
-                os.rmdir(os.getcwd()+"/"+backup)
+                shutil.rmtree(os.getcwd()+"/"+backup)
                 Msg.Message.sucMessage(2,"已刪除 "+os.getcwd()+"/"+backup)
                 pass 
             else :

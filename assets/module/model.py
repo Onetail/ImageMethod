@@ -21,14 +21,17 @@ class ModuleModel:
                 self.doPath = judge.Appropriate(self.doPath,self.locate).checkType()
                 self.type = input("> Enter Type : (DEFAULT) ") 
                 self.type = judge.Appropriate(self.type,"DEFAULT").checkType()
-                self.size = input("> Enter Size : (100x100) ")
-                self.size = judge.Appropriate(self.size,"100,100").checkType()
-                self.size = tuple(map(int,re.split(",|x|X| ",self.size)))
                 
                 if self.type.upper().strip() == "COPY": # to backup file and directory
                     fs.FileSystem().buildDirectory()
                 elif self.type.upper().strip() == "DELETE": # delete backup file
                     fs.FileSystem().deleteDirectory()
+                    continue
+                
+                self.size = input("> Enter Size : (100x100) ")
+                self.size = judge.Appropriate(self.size,"100,100").checkType()
+                self.size = self.size.replace("(","").replace(")","")
+                self.size = tuple(map(int,re.split(",|x|X| ",self.size.strip())))
                     
                 # do image deal with 
                 feature.Switch().tryTest(self.doPath,self.size,self.type)
