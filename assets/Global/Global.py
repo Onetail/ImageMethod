@@ -1,0 +1,1 @@
+ANDROID_MIPMAP = ["mipmap-hdpi","mipmap-mdpi","mipmap-xhdpi","mipmap-xxhdpi","mipmap-xxxhdpi"]
