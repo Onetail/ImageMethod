@@ -14,7 +14,7 @@ class ModuleModel:
         self.size = "100,100"
 
     def modelLoop(self):
-        # try:
+        try:
             Msg.Message.sucMessage(1)
             
             while 1:
@@ -57,6 +57,6 @@ class ModuleModel:
                 feature.Switch().tryTest(self.doPath,self.size,self.type)
                 Msg.Message.msgMessage(3,"path: {:10} , type: {:10} , size: {:10}".format(self.doPath,self.type,str(self.size)))
 
-        # except:
-        #     Msg.Message.msgMessage(3,"\nfinally!")
+        except:
+            Msg.Message.msgMessage(3,"\nfinally!")
             
