@@ -5,7 +5,7 @@ import assets.message.MessageManage as Msg
 
 class Switch:
 	imageaddress = [""]
-	imagetype = ["default","copy"]
+	imagetype = ["default","copy","normal"]
 	def __init__(self,ftype="JPEG"):
 		self.ftype = ftype 
 		self.image = None
@@ -21,19 +21,20 @@ class Switch:
 		self.image.save(self.fname,self.ftype)
 		return self
 
-	def imageCopy(self,fname):
-		self.fname = os.getcwd()+"/Backup/"+fname
+	def imageCopy(self,fname,savelocate):
+		self.fname = os.getcwd()+savelocate+fname
 		return self
 
 	
-	def tryTest(self,locate,fsize,type):
+	def tryTest(self,locate,fsize,type,savelocate=""):
 		if self.modelCheck(locate,type) == "tt":
 			for addr,dire,fi in os.walk(locate):
 				for i in range(len(fi)):
 					if fi[i].endswith(".jpg") or fi[i].endswith(".jpeg") or fi[i].endswith(".png"):
 						self.imageChangesize(fsize,addr+fi[i])
+						self.imageCopy(fi[i],"/"+savelocate)
 						if type.upper().strip()=="COPY":
-							self.imageCopy(fi[i])
+							self.imageCopy(fi[i],"/Backup/"+savelocate)
 						self.imageSavetype()
 			Msg.Message.sucMessage(2," Finished work!")
 
