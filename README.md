@@ -27,3 +27,5 @@
 
 * ```copy``` -> build ```Backup``` dictory and build ```Android``` dictory and android's icon dictory in this.
 
+> The project can more simple to finish handle android's icon size 
+
